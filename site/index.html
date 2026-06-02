@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CreArtBox CRM — Sugeridos de hoy</title>
+  <meta name="description" content="Panel diario: 10 emails sugeridos para la red de teatros y venues de CreArtBox." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">CB</div>
+        <div>
+          <div class="brand-name">CreArtBox</div>
+          <div class="brand-sub">CRM de teatros</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="today">🎯 Los 10 de hoy</button>
+        <button class="nav-item" data-view="projects">🎭 Proyectos</button>
+        <button class="nav-item" data-view="contacts">📇 Contactos</button>
+        <button class="nav-item" data-view="how">⚙️ Cómo funciona</button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="pill">Prototipo</div>
+        <p>Datos de ejemplo. El motor real leerá Gmail + HubSpot.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="view-title">Los 10 de hoy</h1>
+          <p class="muted" id="today-date"></p>
+        </div>
+        <div class="topbar-actions">
+          <span class="who">Guillermo Laporta</span>
+          <span class="avatar">GL</span>
+        </div>
+      </header>
+
+      <section class="view" id="view"></section>
+    </main>
+  </div>
+
+  <!-- Modal de edición de borrador -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div>
+          <span class="badge" id="m-type"></span>
+          <span class="tag" id="m-project"></span>
+        </div>
+        <button class="icon-btn" id="m-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="field">
+          <span>Para</span>
+          <input id="m-to" type="text" />
+        </label>
+        <label class="field">
+          <span>Asunto</span>
+          <input id="m-subject" type="text" />
+        </label>
+        <label class="field">
+          <span>Mensaje</span>
+          <textarea id="m-body" rows="12"></textarea>
+        </label>
+        <p class="why" id="m-why"></p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" id="m-snooze">Posponer</button>
+        <button class="btn" id="m-approve">✓ Aprobar y crear borrador en Gmail</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="./assets/data.js"></script>
+  <script src="./assets/app.js"></script>
+</body>
+</html>
