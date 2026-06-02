@@ -38,6 +38,8 @@ etiquetada de teatros**. Si no, el motor escribiría a spam.
 | Tema | Decisión |
 |---|---|
 | **CRM base** | Reutilizar HubSpot como almacén (ya es el CRM); **no** construir uno desde cero. |
+| **Base limpia** | **HubSpot como fuente única**, depurado a fondo (quitar spam y datos de tienda). Decisión de Guillermo (2026-06-02). |
+| **Origen de contactos buenos** | Filtrar y rescatar los contactos reales que ya están **dentro de HubSpot**. |
 | **Enfoque** | **Ligero** sobre HubSpot + Gmail. El motor corre como tarea de Claude usando los MCP de HubSpot y Gmail. Sin servidor propio al inicio. |
 | **Salida diaria** | Borradores creados directamente en **Gmail** + Tarea/Nota en HubSpot por contacto. |
 | **Aprobación** | Manual: Guillermo revisa en Gmail y envía. Nada se envía solo. |
@@ -55,14 +57,22 @@ etiquetada de teatros**. Si no, el motor escribiría a spam.
 
 ## 5. Plan por fases
 
-### Fase 0 — Lista limpia de teatros (bloqueante)
-- Definir qué es un "teatro/venue" válido y los campos mínimos: nombre del venue, contacto,
-  email, ciudad/país, tipo, idioma preferido, estado de relación, último contacto.
-- **Construir el dataset** a partir de: (a) historial de Gmail con venues, (b) Excel propios,
-  (c) filtrado del ruido de HubSpot.
-- Decidir **dónde vive la lista limpia**: lista/segmento + propiedad personalizada en HubSpot,
-  o una Google Sheet de trabajo. (Pregunta abierta — ver §7.)
-- **Definir los proyectos** (campañas) y etiquetar cada contacto con sus proyectos.
+### Fase 0 — Limpiar HubSpot a fondo (bloqueante)
+Decisión: HubSpot es la base única; hay que depurarlo. Enfoque **seguro y reversible** (nada
+se borra sin respaldo y confirmación):
+
+1. **Diagnóstico** (solo lectura): cuantificar spam vs. real. Señales de spam detectadas:
+   nombres aleatorios (`QcvPbYXDvQDNKDGzP`), correos con patrones raros, dominios no-venue,
+   contactos de la tienda/Shopify (deals `#1521`, etapa `shipped`), sin engagement.
+2. **Respaldo**: exportar todos los contactos/empresas/deals antes de tocar nada.
+3. **Etiquetar lo bueno** (aditivo, no destructivo): crear propiedad `Tipo = Teatro/Venue` y
+   listas/segmentos; marcar los contactos reales de teatros.
+4. **Aislar el ruido**: lista "Revisar/Spam" y lista "Tienda/E-commerce" para separarlos.
+5. **Borrar/archivar** solo tras revisión y **confirmación explícita** de Guillermo.
+6. **Definir los proyectos** (campañas) y etiquetar cada contacto con sus proyectos.
+
+> Regla: el borrado es difícil de revertir → primero respaldo + etiquetado, y se confirma
+> antes de eliminar.
 
 ### Fase 1 — Motor diario (MVP)
 - Lógica de selección de candidatos (pendientes + nuevos) y de reparto entre proyectos.
@@ -83,9 +93,9 @@ etiquetada de teatros**. Si no, el motor escribiría a spam.
 - **Revisión humana** obligatoria al inicio para cuidar la relación con presentadores reales.
 
 ## 7. Preguntas abiertas
-1. ¿Dónde guardamos la **lista limpia de teatros**: dentro de HubSpot (lista + propiedad
-   "Tipo = Venue/Teatro" + etiqueta de proyecto) o en una **Google Sheet** de trabajo?
+1. ~~¿Dónde vive la lista limpia?~~ **Resuelto:** HubSpot como base única, depurado a fondo.
 2. ¿Cuáles son los **proyectos/campañas activos** ahora mismo (p. ej. temporada NYC 26/27,
    gira España, festival ADAR, residencias)?
-3. ¿Tienes un **Excel concreto** con los teatros? Si sí, ¿cuál/ruta para leerlo y limpiarlo?
+3. ¿Cómo reconocemos un **teatro/venue real** frente al spam? (¿Por dominio, por haber tenido
+   conversación en Gmail, por etiqueta manual previa?)
 4. ¿Reglas de prioridad: cada cuántos días re-contactar, cuántos emails máx. por proyecto/día?
