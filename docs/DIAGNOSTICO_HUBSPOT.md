@@ -1,5 +1,10 @@
 # Diagnóstico de HubSpot — base de datos (2026-06-03)
 
+> ⚠️ **PRIVACIDAD — repo público.** Este repositorio es **público**. Está **prohibido**
+> volcar aquí datos personales de contactos (nombres, emails, teléfonos). Los datos reales
+> viven **solo en HubSpot**. En el repo, únicamente agregados/recuentos y datos de ejemplo.
+
+
 Diagnóstico **de solo lectura** del portal HubSpot de CreArtBox (cuenta `21849962`).
 Objetivo: medir cuánto es spam / tienda / teatro real, para planificar la limpieza de la Fase 0.
 
@@ -37,8 +42,8 @@ Objetivo: medir cuánto es spam / tienda / teatro real, para planificar la limpi
 | Recibieron alguna **email de marketing** | **1.706** | audiencia realmente alcanzable |
 
 > ~5.600 contactos **nunca** recibieron un email de marketing (nunca segmentados, o inválidos/bounce).
-> Spam confirmado: altas de bots con nombres aleatorios, p. ej. `QcvPbYXDvQDNKDGzP OqkwJaEGgOtQcbwkISvP`
-> (`ulu.z.e.r.o.j.2.2.4@gmail.com`).
+> Spam confirmado: altas de bots con nombres aleatorios (p. ej. cadenas tipo `QcvPbYX…`) y
+> direcciones de gmail con patrones de bot. (Emails concretos omitidos: repo público.)
 
 ## 5. 🎯 Los teatros reales YA están segmentados en listas
 
