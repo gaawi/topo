@@ -54,8 +54,16 @@ Objetivo: medir cuánto es spam / tienda / teatro real, para planificar la limpi
 | 03 Send VIP Package (41) | 1 | fundraising | no |
 | Magazine Subscriber (13) | 0 | vacía | no |
 
-**Universo "bueno" de venues/presentadores** (con solapamientos a deduplicar):
-Redescena (1.221) + Presenter+Chamber (235) + Musical America (1.585) + Germany (182).
+**Universo "bueno" de venues/presentadores** = unión de las 4 listas
+(Redescena + Presenter+Chamber + Musical America + Germany), confirmado por Guillermo:
+
+| Métrica | Nº |
+|---------|---:|
+| **Venues únicos (deduplicado)** | **2.962** |
+| — de ellos, con email de marketing recibido | 1.501 |
+
+Es decir: de 7.322 contactos, **~2.962 son la base real de teatros**; los otros ~4.360 son
+tienda + spam + imports sin clasificar.
 
 ## 6. Conclusión
 
